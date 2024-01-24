@@ -4,9 +4,9 @@
 
 ## Installation
 
-#### Install all dependencies with [This link](https://dl.espressif.com/dl/esp-idf/) for Windows
+### Install all dependencies with [This link](https://dl.espressif.com/dl/esp-idf/) for Windows
 
-#### Or, on linux, follow [these instructions](https://github.com/esp-rs/rust-build?tab=readme-ov-file#xtensa-installation)
+### Or, on linux, follow [these instructions](https://github.com/esp-rs/rust-build?tab=readme-ov-file#xtensa-installation)
 
 Once installed, running ```cargo run``` will flash to the connect board and begin monitoring the serial communications. We have compiled this with the std approach so we can (hopefully) use more standard libraries
 
