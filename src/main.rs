@@ -23,7 +23,8 @@ fn main() -> Result<(), Box<dyn Error>> {
     button1.set_pull(Pull::Down)?;
     button2.set_pull(Pull::Down)?;
 
-    let model_str = "D|3|2|10.845654 11.002682 -13.501029 -14.699452 -53.440483 -53.715294|-6.101849 49.06853 61.28852#D|1|3|30.350481 -78.40228 70.861206|-19.532055#D|1|1|15.161753|-3.7315714".to_string();
+    let model_str = "D|3|2|10.845654 11.002682 -13.501029 -14.699452 -53.440483 -53.715294|
+    -6.101849 49.06853 61.28852#D|1|3|30.350481 -78.40228 70.861206|-19.532055#D|1|1|15.161753|-3.7315714".to_string();
 
     let mut xor_net = Network::deserialize_triton_fmt_string(model_str);
 
@@ -31,7 +32,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let mut input2: f32;
 
     loop {
-        FreeRtos::delay_ms(2000);
+        FreeRtos::delay_ms(20);
         if button1.is_high() {
             input1 = 0.0;
         } else {
@@ -45,7 +46,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         }
 
         let res = xor_net.predict(&vec![input1, input2])[0].round();
-        log::info!("{}", res);
+        //log::info!("{}", res);
         if res == 1.0 {
             led.set_high()?;
         } else {
