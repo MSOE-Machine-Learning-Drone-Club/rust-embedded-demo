@@ -1,11 +1,7 @@
 use std::error::Error;
 
-use esp_idf_svc::hal::delay::FreeRtos;
-use esp_idf_svc::hal::gpio::PinDriver;
-use esp_idf_svc::hal::peripherals::Peripherals;
-use esp_idf_triton::network::network::Network;
-use esp_idf_hal::gpio::*;
-use esp_camera_rs::Camera;
+use log::logger;
+
 
 fn main() -> Result<(), Box<dyn Error>> {
     // It is necessary to call this function once. Otherwise some patches to the runtime
@@ -14,6 +10,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     // Bind the log crate to the ESP Logging facilities
     esp_idf_svc::log::EspLogger::initialize_default();
+    log::info!("Hello :))))");
 
     /*let peripherals = Peripherals::take()?;
     let mut led = PinDriver::output(peripherals.pins.gpio12)?;
@@ -52,36 +49,36 @@ fn main() -> Result<(), Box<dyn Error>> {
         } else {
             led.set_low()?;
         }
-    }*/
+    }
     let camera_config = esp_idf_sys::camera::camera_config_t {
-        pin_pwdn: 32,
+        pin_pwdn: -1,
         pin_reset: -1,
-        pin_xclk: 0,
+        pin_xclk: 15,
         sccb_i2c_port: -1,
         __bindgen_anon_1:
             esp_idf_sys::camera::camera_config_t__bindgen_ty_1 {
-                pin_sccb_sda: 26
+                pin_sccb_sda: 4
             },
         __bindgen_anon_2:
             esp_idf_sys::camera::camera_config_t__bindgen_ty_2 {
-                pin_sscb_scl: 27,
+                pin_sscb_scl: 5,
             },
-        pin_d7: 35,
-        pin_d6: 34,
-        pin_d5: 39,
-        pin_d4: 36,
-        pin_d3: 21,
-        pin_d2: 19,
-        pin_d1: 18,
-        pin_d0: 5,
-        pin_vsync: 25,
-        pin_href: 23,
-        pin_pclk: 22,
+        pin_d7: 16,
+        pin_d6: 17,
+        pin_d5: 18,
+        pin_d4: 12,
+        pin_d3: 10,
+        pin_d2: 8,
+        pin_d1: 9,
+        pin_d0: 11,
+        pin_vsync: 6,
+        pin_href: 7,
+        pin_pclk: 13,
         xclk_freq_hz: 20000000,
         ledc_timer: esp_idf_sys::ledc_timer_t_LEDC_TIMER_0,
         ledc_channel: esp_idf_sys::ledc_channel_t_LEDC_CHANNEL_0,
         pixel_format: esp_idf_sys::cam::pixformat_t_PIXFORMAT_JPEG,
-        frame_size: esp_idf_sys::cam::framesize_t_FRAMESIZE_QVGA,
+        frame_size: esp_idf_sys::cam::framesize_t_FRAMESIZE_UXGA,
         jpeg_quality: 12,
         fb_count: 1,
         fb_location:
@@ -103,5 +100,6 @@ fn main() -> Result<(), Box<dyn Error>> {
         let data = std::slice::from_raw_parts((*fb).buf, (*fb).len);
         println!("{data:?}");
     }
+    */
     Ok(())
 }
