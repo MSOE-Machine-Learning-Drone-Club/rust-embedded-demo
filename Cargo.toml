@@ -25,11 +25,11 @@ embassy = ["esp-idf-svc/embassy-sync", "esp-idf-svc/critical-section", "esp-idf-
 
 [dependencies]
 log = { version = "0.4", default-features = false }
-esp-idf-svc = { version = "0.47.3", default-features = false }
+esp-idf-svc = { version = "0.48.0", default-features = false }
 esp-idf-triton = "0.1.6"
-esp-idf-hal = "0.42.5"
-esp-camera-rs = { git = "https://github.com/BradenEverson/esp-camera-rs", version = "0.1.0" }
-esp-idf-sys = "0.33"
+esp-idf-hal = "0.43.0"
+esp-idf-sys = "0.34"
+esp-wifi = "0.3.0"
 
 [[package.metadata.esp-idf-sys.extra_components]]
 component_dirs = "esp32-camera"  
